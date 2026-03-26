@@ -30,8 +30,8 @@
 
 #define USE_TARGET_CONFIG
 
-#define LED0                    PE6
-#define LED1                    PE4
+#define LED0                    PE4
+#define LED1                    PE6
 
 #define BEEPER                  PE5
 #define BEEPER_INVERTED
@@ -90,11 +90,17 @@
 #define ICM42605_SPI_BUS        BUS_SPI1
 #define ICM42605_CS_PIN         PA4
 #define USE_IMU_ICM42605
-#define IMU_ICM42605_ALIGN      CW0_DEG
+#define IMU_ICM42605_ALIGN      CW180_DEG_FLIP
 
 #define USE_MAX7456
 #define MAX7456_SPI_BUS         BUS_SPI2
 #define MAX7456_CS_PIN          PB12
+
+#define USE_FLASHFS
+#define USE_FLASH_M25P16
+#define M25P16_CS_PIN           SPI3_NSS_PIN
+#define M25P16_SPI_BUS          BUS_SPI3
+#define ENABLE_BLACKBOX_LOGGING_ON_SPIFLASH_BY_DEFAULT
 
 #define USE_I2C
 
@@ -107,46 +113,37 @@
 #define I2C2_SDA                PB11
 
 #define USE_BARO
-#define BARO_I2C_BUS            BUS_I2C2
+#define BARO_I2C_BUS            BUS_I2C1
 #define USE_BARO_DPS310
 #define USE_BARO_SPL06
 
 #define USE_MAG
-#define MAG_I2C_BUS             BUS_I2C1
+#define MAG_I2C_BUS             BUS_I2C2
 #define USE_MAG_ALL
 
 #define USE_RANGEFINDER
 #define USE_RANGEFINDER_US42
-#define RANGEFINDER_I2C_BUS     BUS_I2C1
-#define PITOT_I2C_BUS           BUS_I2C1
-#define TEMPERATURE_I2C_BUS     BUS_I2C1
-
-#define USE_SDCARD
-#define USE_SDCARD_SDIO
-#define SDCARD_SDIO_DEVICE      SDIODEV_1
-#define SDCARD_SDIO_4BIT
+#define RANGEFINDER_I2C_BUS     BUS_I2C2
+#define PITOT_I2C_BUS           BUS_I2C2
+#define TEMPERATURE_I2C_BUS     BUS_I2C2
 
 #define USE_ADC
 #define ADC_INSTANCE                ADC1
 
 #define ADC_CHANNEL_1_PIN           PC0
 #define ADC_CHANNEL_2_PIN           PC1
-#define ADC_CHANNEL_3_PIN           PC4
 
 #define VBAT_ADC_CHANNEL            ADC_CHN_1
 #define CURRENT_METER_ADC_CHANNEL   ADC_CHN_2
-#define AIRSPEED_ADC_CHANNEL        ADC_CHN_3
 
 #define USE_PINIO
 #define USE_PINIOBOX
 #define PINIO1_PIN                  PE2
-#define PINIO2_PIN                  PE1
+#define PINIO2_PIN                  PC13
 
 #define DEFAULT_FEATURES            (FEATURE_TX_PROF_SEL | FEATURE_OSD | FEATURE_CURRENT_METER | FEATURE_VBAT | FEATURE_TELEMETRY | FEATURE_BLACKBOX)
 #define CURRENT_METER_SCALE         200
 #define VBAT_SCALE_DEFAULT          2100
-
-#define ENABLE_BLACKBOX_LOGGING_ON_SDCARD_BY_DEFAULT
 
 #define TARGET_IO_PORTA 0xffff
 #define TARGET_IO_PORTB 0xffff
@@ -154,7 +151,7 @@
 #define TARGET_IO_PORTD 0xffff
 #define TARGET_IO_PORTE 0xffff
 
-#define MAX_PWM_OUTPUT_PORTS 13
+#define MAX_PWM_OUTPUT_PORTS 5
 
 #define USE_DSHOT
 #define USE_ESC_SENSOR
